@@ -3,7 +3,7 @@
 > Vocabulary trainer based on active recall with forced retrieval, featuring uploadable wordlists and timed sessions
 > A recreation of my two previous console-based learning apps in a much better online environment.
 
-<video src="./wordtest.mp4" controls></video>
+<video src="./wordtest.mp4" width="100%" controls></video>
 
 ## Features
 
