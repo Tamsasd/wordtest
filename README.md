@@ -24,3 +24,12 @@
 
 - **Language:** Javascript
 - **Frontend:** HTML, CSS
+
+## TODO
+
+- Create an option to learn words in batches
+- Implement some sort of a "small shuffle" algorithm that automatically select words based on the user's knowledge
+
+## Acknowledgments
+
+- Monocraft font by IdreesInc: [link](https://github.com/IdreesInc/Monocraft)
