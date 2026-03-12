@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>WordTest Online</title>
+
+  <link rel="stylesheet" href="styles/general.css">
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/io.css">
+  <link rel="stylesheet" href="styles/evaluation.css">
+  <link rel="stylesheet" href="styles/editor.css">
+  <link rel="stylesheet" href="styles/settings.css">
+  <link rel="stylesheet" href="styles/stats.css">
+  <link rel="stylesheet" href="styles/media-queries.css">
+
+
+
+  <!-- Import Roboto font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+  <!-- Import Monocraft font -->
+  <style>
+    @font-face {
+      font-family: 'Monocraft';
+      src: url('fonts/Monocraft.ttf') format('truetype');
+    }
+  </style>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+
+<body>
+
+  <header>
+    <div class="loader">
+    loading...
+    </div>
+    <div class="logo" onclick="close_editor(); close_settings();">wordtest</div>
+    <div class="stats">
+      <div class="stats-container">
+        <div class="correct-per-all">0/0</div>
+        <div class="percentage">0%</div>
+        <div class="time-left">0:00</div>
+      </div>
+    </div>
+    <div class="header-buttons">
+      <div class="header-button" id="pause-button" onclick="toggleFocus()">
+        <span id="pause-icon">&#9205</span>
+        <div class="tooltip" id="pause-button-tooltip">resume</div>
+      </div>
+      <div class="header-button" id="finish-button" onclick="finishExam()">
+        &#9209<div class="tooltip">end session</div>
+      </div>
+      <div class="header-button" id="editor-button" onclick="toggleEditorPanel()">
+        &#9998<div class="tooltip">editor</div>
+      </div>
+      <div class="header-button" id="settings-button" onclick="toggleSettingsPanel()">
+        &#9776<div class="tooltip">settings</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="answer-evaluation">
+    <div class="close" onclick="stop_evaluate()">
+      x<div class="tooltip">close</div>
+    </div>
+    <div class="titleword">
+      your answer
+    </div>
+    <div class="guess">
+      guess
+    </div>
+    <div class="titleword">
+      correct answer
+    </div>
+    <div class="correct"> </div>
+  </div>
+
+  <div class="exam-summary">
+
+    <div class="summary-stats">
+      <div class="stat">
+        <div class="statname">percent</div>
+        <div class="statvalue" id="summary-percent">79%</div>
+      </div>
+
+      <div class="stat">
+        <div class="statname">score</div>
+        <div class="statvalue" id="summary-score">31/38</div>
+      </div>
+
+      <div class="stat">
+        <div class="statname">time</div>
+        <div class="statvalue" id="summary-time">2:51</div>
+      </div>
+
+      <div class="stat">
+        <div class="statname">hints</div>
+        <div class="statvalue" id="summary-hints">3</div>
+      </div>
+    </div>
+
+    <div class="summary-interactive">
+      <div class="summary-entry-container"></div>
+      <div class="summary-options">
+        <div class="summary-button" onclick="toggleSummaryView()">
+          &#8644 <div class="tooltip" id="toggle-view">show incorrect only</div>
+        </div>
+        <div class="summary-button" onclick="new_exam()">
+          &#9193 <div class="tooltip">start new exam</div>
+        </div>
+        <div class="summary-button" id="practice_incorrect" onclick="practice_incorrect()">
+          ?<div class="tooltip">practice incorrect</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <input type="file" id="file-upload"  accept=".txt" />
+
+  <div class="editor">
+    <div class="close" onclick="close_editor()">
+      x<div class="tooltip">close</div>
+    </div>
+    <div class="editor-header">
+      <label for="file-upload" class="upload">upload file
+        <div class="tooltip">upload file from local storage.</div>
+      </label>
+      <div class="delimiter-button" onclick="change_delimiter()">delimiter: tab</div>
+      <div class="words-loaded">0 words</div>
+    </div>
+    <textarea class="editor-input-box"></textarea>
+  </div>
+
+  <div class="options">
+    <div class="close-settings" onclick="close_settings()">
+      x<div class="tooltip">close</div>
+    </div>
+    <div class="setting-container">
+      <div class="setting">auto-submit:
+        <div class="tooltip" id="toggle-view">automatically evaluates answer when the charactercount reaches the correct
+          answer's length.</div>
+      </div>
+      <button class="button" id="inst-feedback-on" onclick="toggleSetting('autoSubmit', true)">on</button>
+      <button class="button" id="inst-feedback-off" onclick="toggleSetting('autoSubmit', false)">off</button>
+    </div>
+    <div class="divider">-------</div>
+    <div class="setting-container">
+      <div class="setting">case sensitivity:<div class="tooltip">if set off, ignores if a character is lower or upper
+          case.<br><br>for example, if the guess is "abc" and the correct answer is "Abc", the guess will be correct
+          too.</div>
+      </div>
+      <button class="button" id="case-sen-on" onclick="toggleSetting('caseSensitivity', true)">on</button>
+      <button class="button" id="case-sen-off" onclick="toggleSetting('caseSensitivity', false)">off</button>
+    </div>
+
+    <div class="divider">-------</div>
+    <div class="setting-container">
+      <div class="setting">skip evaluation:
+        <div class="tooltip">automatically moves forward to the next word without showing the wrong answer's evaluation
+          panel.</div>
+      </div>
+      <button class="button" id="auto-next-on" onclick="toggleSetting('skipEvaluation', true)">on</button>
+      <button class="button" id="auto-next-off" onclick="toggleSetting('skipEvaluation', false)">off</button>
+    </div>
+
+    <div class="divider">-------</div>
+    <div class="setting-container">
+      <div class="setting">ignore accents:
+        <div class="tooltip">if set on, ignores if a character is accented or not.<br><br>for example, if the guess is
+          "abc" and the correct answer is "ábc", the guess will be correct too.</div>
+      </div>
+      <button class="button" id="ignore-accents-on" onclick="toggleSetting('ignoreAccents', true)">on</button>
+      <button class="button" id="ignore-accents-off" onclick="toggleSetting('ignoreAccents', false)">off</button>
+    </div>
+
+    <div class="divider">-------</div>
+    <div class="setting-container">
+      <div class="setting">mode:
+        <div class="tooltip">practice mode: goes on infinitely, or until a setting or the user stops it. <br>can ask
+          words multiple times<br><br>exam mode: goes on until there's no more words left, or until a setting or the
+          user stops it. <br>asks each word exactly once.</div>
+      </div>
+      <button class="button" id="mode-practice" onclick="setMode(0)">practice</button>
+      <button class="button" id="mode-exam" onclick="setMode(1)">exam</button>
+    </div>
+
+    <div class="divider">-------</div>
+    <div class="setting-container">
+      <div class="setting">order:
+        <div class="tooltip">controls the order in which the words will be asked.</div>
+      </div>
+      <button class="button" id="order-random" onclick="setOrder(0)">random</button>
+      <button class="button" id="order-inorder" onclick="setOrder(1)">forwards</button>
+      <button class="button" id="order-postorder" onclick="setOrder(2)">backwards</button>
+    </div>
+
+    <div class="divider">-------</div>
+    <div class="setting-container">
+      <div class="setting">countdown:
+        <div class="tooltip">triggers the summary page after the set amount of seconds elapsed.</div>
+      </div>
+      <button class="button" id="time-off" onclick="setTime(0)">off</button>
+      <button class="button" id="time-30" onclick="setTime(30)">30</button>
+      <button class="button" id="time-60" onclick="setTime(60)">60</button>
+      <button class="button" id="time-120" onclick="setTime(120)">120</button>
+      <button class="button" id="time-300" onclick="setTime(300)">300</button>
+    </div>
+    <div class="divider">-------</div>
+    <div class="setting-container">
+      <div class="setting">stop-percentage:
+        <div class="tooltip">triggers the summary page after the set amount of percentage is reached.<br>can't be used
+          in exam mode.</div>
+      </div>
+      <button class="button" id="percentage-off" onclick="setPercentage(0)">off</button>
+      <button class="button" id="percentage-50" onclick="setPercentage(50)">50</button>
+      <button class="button" id="percentage-60" onclick="setPercentage(60)">60</button>
+      <button class="button" id="percentage-80" onclick="setPercentage(80)">80</button>
+      <button class="button" id="percentage-90" onclick="setPercentage(90)">90</button>
+    </div>
+    <div class="divider">-------</div>
+    <div class="setting-container">
+      <div class="setting">colors:
+        <div class="tooltip">modifies the appearance of the page.</div>
+      </div>
+      <button class="button" id="colors-dark" onclick="setColorMode(0)">dark</button>
+      <button class="button" id="colors-light" onclick="setColorMode(1)">light</button>
+    </div>
+  </div>
+
+
+
+  <div class="title">
+    summary
+  </div>
+
+  <div class="answer-container">
+    <div class="answer" id='incorrect' style="background-color: var(--color-error);">
+      incorrect
+    </div>
+    <div class="answer" id='correct' style="background-color: var(--color-success);">
+      correct
+    </div>
+    <div class="evanswer" id='ev'>
+      incorrect
+    </div>
+  </div>
+
+  <div class="blur">
+    <div class="hint-text">
+      Hint: TAB
+    </div>
+    <div class="asked">
+      enter your words in the editor!
+    </div>
+    <div class="input-box" id="screen"></div>
+    <input type="text" id="hidden-input" inputmode="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="font-size:2rem; opacity: 0; position: absolute; left: -9999px;">
+  </div>
+
+  <div class="focus-text" onclick="start_focus();">
+    click here or press a button to focus
+  </div>
+  <div class="focus-click-area" onclick="start_focus();"></div>
+
+  <div class="madeby">
+    <a class="author" href="http://www.tamas.horneczki.hu">Tamás Horneczki</a>
+    <div class="year">2025</div>
+    <div class="version">Version: 1.5</div>
+  </div>
+
+  <script src="script.js"> </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Parse Text File</title>
+</head>
+<body>
+  <input type="file" id="file-upload" />
+  <div class="asd"></div>
+  <script>
+    let words = [];
+    document.getElementById('file-upload').addEventListener('change', function (event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const read = new FileReader();
+
+      read.onload = function () {
+        document.querySelector(".asd").textContent = read.result;
+        const text = read.result;
+        const delimiter = '\t'; // Change this to your actual delimiter
+        const lines = text.trim().split('\n');
+
+        const words = lines
+          .map(line => line.trim())
+          .filter(line => line.length > 0 && line.includes(delimiter))
+          .map(line => {
+            const [a, b] = line.split(delimiter);
+            return { a: a.trim(), b: b.trim() };
+          });
+
+        console.log(words); // Array of objects { a, b }
+      };
+
+      read.readAsText(file);
+    });
+
+    
+  </script>
+</body>
+</html>

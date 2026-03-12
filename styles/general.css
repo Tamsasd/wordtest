@@ -1,0 +1,149 @@
+:root {
+  --color-text: white;
+  --color-text-primary: rgb(184, 184, 184);
+  --color-text-secondary: rgb(120, 120, 120);
+  --color-background-dark: rgb(36, 36, 36);
+  --color-background-light: rgb(44, 46, 49);
+  --color-background-main: rgb(50, 52, 55);
+  --color-error: lightcoral;
+  --color-success: rgb(187, 255, 187);
+}
+
+html {
+  font-size: 1rem;
+}
+
+body {
+  background-color: var(--color-background-main);
+  font-family: Monocraft, Roboto;
+  font-weight: normal;
+  color: var(--color-text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.close {
+  font-size: 1.2rem;
+  color: var(--color-text-primary);
+  position: absolute;
+  padding: 0;
+  top: 10px;
+  right: 15px;
+  text-align: right;
+  display: inline;
+  user-select: none;
+  transition: color 0.15s;
+}
+
+.close:hover {
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.close:active {
+  color: var(--color-error);
+}
+
+.tooltip {
+  position: absolute;
+  right: 0;
+  transform: translateX(35%);
+  top: 100%;
+  width: max-content;
+  max-width: 300px;
+  background-color: var(--color-background-dark);
+  color: var(--color-text);
+  padding: 4px 8px;
+  border-radius: 2px;
+  font-size: 0.75rem;
+  font-family: Monocraft, Roboto, Arial;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: 101;
+  white-space: normal;
+}
+
+
+*:hover > .tooltip
+{
+  transition-delay: 0.4s;
+  opacity: 1;
+}
+
+*.hide {
+  display: none;
+  pointer-events: none;
+}
+
+.madeby {
+  position: absolute;
+  font-size: 0.8rem;
+  left: 20px;
+  right: 20px;
+  margin: 0 auto;
+  bottom: 10px;
+  color: var(--color-text-secondary);
+  display: flex;
+  justify-content: space-between;
+  cursor: default;
+  user-select: none;
+  max-width: 1650px;
+  box-sizing: border-box;
+}
+
+.year {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.author {
+  cursor: pointer;
+  transition: color 0.15s;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+
+.author:hover {
+  color: var(--color-text);
+  position: relative;
+  top: -2px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: none
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(68, 68, 68);
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(85, 85, 85);
+  cursor: default;
+}
+
+.loader {
+  position: absolute;
+  color: var(--color-text-primary);
+  background-color: var(--color-background-main);
+  padding-top: 30%;
+  text-align: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999999999;
+}

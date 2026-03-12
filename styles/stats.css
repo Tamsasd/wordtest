@@ -1,0 +1,35 @@
+.stats {
+  background-color: var(--color-background-light);
+  display: flex;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  justify-content: space-between;
+  border-radius: 14px;
+  padding: 10px 14px 8px 14px;
+  max-width: 500px;
+  transition: top 0.15s, width 0.15s, opacity 0.3s, visibility 0.3s;  
+  box-sizing: border-box;
+  white-space: nowrap;
+  user-select: none;
+  opacity: 1;
+  visibility: visible;
+  box-shadow: 3px 3px 5px rgba(0,0,0,50%);
+  font-size: 0.9rem;
+}
+
+.stats-container {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  flex: 1;
+  color: var(--color-text-primary);
+  gap: 20px;
+}
+
+.correct-per-all, .percentage, .time-left {
+  margin: 0;
+  transition: display 0.15s;
+  padding: 0;
+  flex-shrink: 0;
+}

@@ -1,0 +1,100 @@
+.asked {
+  margin: 26px 40px 30px 40px;
+  font-size: 1.5rem;
+  text-align: center;
+  color: var(--color-text-primary);
+  transition: margin 0.15s, opacity 0.3s, visibility 0.3s;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: none;
+}
+
+
+.input-box {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: var(--color-text);
+  padding: 0px 40px 0px 40px;
+  max-width: 1570px;
+  margin-left: auto;
+  margin-right: auto;
+  word-wrap: break-word;
+  text-align: center;
+  transition: opacity 0.3s, visibility 0.3s;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: none;
+}
+
+.answer, .evanswer {
+  display: inline-block;
+  position: absolute;
+  border-radius: 4px;
+  padding: 4px 15px 5px 15px;
+  color: black;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 1s, top 0.15s, visibility 1s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 10;
+}
+
+.answer {
+  top: 77px;
+}
+
+.evanswer {
+  top: 128px;
+  background-color: var(--color-error);
+  transition: opacity 0.15s;
+}
+
+.hint-text {
+  text-align: center;
+  margin-top: 26px;
+  color: var(--color-text-secondary);
+  user-select: none;
+  transition: opacity 0.3s;
+  opacity: 0;
+  visibility: visible;
+  pointer-events: none;
+}
+
+/* different from other show/hide stuff, do not remove */
+.hint-text.show {
+  opacity: 1;
+  transition: opacity 1s;
+  pointer-events: all;
+}
+
+.focus-text {
+  font-size: 0.8rem;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 155px;
+  max-width: 1650px;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+}
+
+.blur {
+  transition: filter 0.3s, opacity 0.3s;
+}
+
+.blur.on {
+  filter: blur(10px);
+  opacity: 30%;
+}
+
+.focus-click-area {
+  position:absolute;
+  left: 0;
+  right: 0;
+  bottom: 40px;
+  top: 90px;
+  z-index: -1;
+}

@@ -1,0 +1,88 @@
+header {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  margin: 20px auto 10px auto;
+  max-width: 1650px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.logo {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  user-select: none;
+  position:relative;
+}
+
+.logo::after {
+  content: '';
+  font-size: 0.7rem;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  cursor: default;
+  pointer-events: none;
+}
+
+.logo.practice::after {
+  content: 'practice mode';
+  color: var(--color-success);
+}
+
+.logo.exam::after {
+  content: 'exam mode';
+  color: var(--color-error);
+}
+
+.header-button {
+  position: relative;
+  display: inline-block;
+  user-select: none;
+  color: var(--color-text-primary);
+  transition: all 0.3s;
+  font-size: 1.5rem;
+}
+
+#editor-button {
+  margin-top: 3px;
+}
+
+#settings-button {
+  font-size: 2rem;
+}
+
+#finish-button {
+  margin-top: 4px;
+  margin-right: -4px;
+}
+
+#pause-button {
+  margin-top: 4px;
+  margin-right: -7px;
+}
+
+.header-button:hover {
+  color: var(--color-text);
+  cursor: pointer;  
+  top: -2px;
+}
+
+.header-button:active {
+  color: var(--color-error);
+}
+
+.editor:active {
+  background-color: var(--color-text-primary);
+}
+
+.header-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+
+

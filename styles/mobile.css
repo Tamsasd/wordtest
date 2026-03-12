@@ -1,0 +1,121 @@
+html {
+  font-size: 32px;
+}
+
+*:hover > .tooltip
+{
+  opacity: 0;
+}
+
+.stats {
+  font-size: 1.2rem;
+  border-radius: 18px;
+  padding: 20px 28px 16px 28px;
+}
+
+.stats-container {
+  gap: 30px;
+}
+
+.logo:after {
+  font-size: 0.9rem;
+}
+
+.header-button {
+  font-size: 2rem;
+}
+
+#settings-button {
+  font-size: 2.6rem;
+  margin-left: 20px;
+  margin-top: -5px;
+}
+
+.focus-text {
+  font-size: 1rem;
+  top: 260px;
+}
+
+.asked {
+  margin-top: 46px;
+}
+
+.editor {
+  top: 200px;
+  bottom: 140px;
+}
+
+.editor-header {
+  top: 30px;
+  left: 40px;
+  right: 60px;
+  gap: 20px;
+}
+
+.upload, .delimiter-button{
+  font-size: 1.1rem;
+}
+
+.words-loaded {
+  font-size: 0.95rem;
+ }
+
+.editor-input-box {
+  top: 110px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+}
+
+.close {
+  top: 15px;
+}
+
+.answer-evaluation,
+.exam-summary {
+  top: 140px;
+  bottom: 120px;
+}
+
+.answer-evaluation {
+  top: 240px;
+  bottom: 140px;
+  padding: 40px;
+}
+
+.evanswer {
+  top: 228px;
+}
+
+.summary-interactive {
+  gap: 20px;
+}
+
+.summary-entry-container {
+  border-radius: 14px;
+}
+
+.exam-summary {
+    flex-direction: column;
+}
+
+  .summary-stats {
+    flex-direction: row;
+}
+
+.summary-button {
+  font-size: 2.5rem;
+}
+
+.options {
+  top: 200px;
+}
+
+.focus-click-area {
+  bottom: 60px;
+  top: 160px;
+}
+
+.answer {
+  top: 140px;
+}

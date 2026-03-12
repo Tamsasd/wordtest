@@ -1,0 +1,129 @@
+.answer-evaluation,
+.exam-summary {
+  position: fixed;
+  top: 140px;
+  bottom: 70px;
+  left: 40px;
+  right: 40px;
+  max-width: 1570px;
+  margin: auto;
+  padding: 20px;
+  font-size: 1.25rem;
+  border-radius: 20px;
+  background-color: var(--color-background-light);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s, top 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  box-shadow: 3px 3px 5px rgba(0,0,0,50%);
+}
+
+.exam-summary {
+  top: 70px;
+  background: none;
+  box-shadow: none;
+}
+
+
+.summary-interactive {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+  box-sizing: border-box;
+  min-height: 0;
+}
+
+.summary-entry-container {
+  flex: 1;
+  min-height: 0;
+  background-color: var(--color-background-dark);
+  border-radius: 7px;
+  padding: 12px;
+  font-family: Monocraft, Roboto, sans-serif;
+  font-size: 1rem;
+  color: var(--color-text);
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.summary-options {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.summary-button {
+  display: flex;
+  position: relative;
+  font-size: 1.5rem;
+  color: var(--color-text-primary);
+  transition: background-color 0.15s, font-size 0.15s;
+  user-select: none;
+  margin-bottom: 15px;
+}
+
+.summary-button:hover {
+  cursor: pointer;
+  color: var(--color-text);
+  top: -2px;
+}
+
+.summary-button:active {
+  color: var(--color-error);
+}
+
+.title {
+  font-size: 1.5rem;
+  position: absolute;
+  color: var(--color-text-primary);
+  left: 50%;
+  transform: translateX(-50%);
+  top: 23px;
+  transition: top 0.15s, opacity 0.3s, visibility 0.3s;
+}
+
+correct {
+  color: var(--color-success);
+}
+
+incorrect {
+  color: var(--color-error);
+}
+
+.titleword {
+  color: var(--color-text-primary);
+}
+
+.guess {
+  margin-bottom: 10px;
+}
+
+.summary-entry {
+  margin: 5px;
+}
+
+.summary-stats {
+  display: flex;
+  gap: 50px
+}
+
+.stat {
+  display: inline-flex;
+  flex-direction: column;
+  text-align: center;  
+}
+
+.statname {
+  font-size: 1rem;
+  user-select: none;
+  color: var(--color-text-secondary);
+}
+
+.statvalue {
+  font-size: 2rem;
+}

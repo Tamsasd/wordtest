@@ -1,0 +1,93 @@
+#file-upload {
+  display: none;
+}
+
+.editor {
+  background-color: var(--color-background-light);
+  left: 40px;
+  right: 40px;
+  max-width: 1570px;
+  position: fixed;
+  top: 70px;
+  bottom: 70px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+  z-index: 21;
+  user-select: none;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s;
+  box-shadow: 3px 3px 5px rgba(0,0,0,50%);
+}
+
+.editor:active {
+  background-color: var(--color-background-light);
+}
+
+.upload, .delimiter-button, .words-loaded {
+  font-size: 1rem;
+  display: inline;
+  padding: 6px 6px 7px 6px;
+  transition: background-color 0.15s, font-size 0.15s;
+  border: none;
+}
+
+.upload, .delimiter-button {
+  background-color: var(--color-background-dark);
+  border-radius: 7px;
+  border: none;
+  position: relative;
+}
+
+.upload::placeholder {
+  color: var(--color-text);
+  font-family: Monocraft, Roboto;
+}
+
+.upload:hover, .delimiter-button:hover {
+  cursor: pointer;
+  background-color: rgb(25, 25, 25);
+}
+
+.upload:active, .delimiter-button:active{
+  background-color: black;
+}
+
+
+.view.changed:active {
+  background-color: var(--color-text);
+}
+
+.editor-header {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  right: 30px;
+  display: flex;
+  gap: 10px;
+}
+
+.editor-input-box {
+  background-color: var(--color-background-dark);
+  border: none;  
+  border-radius: 7px 7px 20px 20px;
+  size-adjust: none;
+  overflow: auto;
+  resize: none;
+  box-sizing: border-box;
+  position: absolute;
+  top: 55px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  outline: none;
+  color: var(--color-text);
+  padding: 12px;
+  font-family: Monocraft, Roboto;
+  font-size: 1rem;
+  transition: font-size 0.15s;
+}
+
+
+

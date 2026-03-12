@@ -1,0 +1,22 @@
+@media (min-width: 900px) {
+
+  .exam-summary {
+    flex-direction: row;
+  }
+
+  .summary-stats {
+    flex: 0;
+    flex-direction: column;
+  }
+
+  .summary-interactive {
+    flex: 5;
+  }
+}
+
+@media (max-width: 900px) {
+  .close-settings {
+    opacity: 1;
+    pointer-events: all;
+  }
+}

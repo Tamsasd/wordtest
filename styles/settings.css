@@ -1,0 +1,92 @@
+
+.divider {
+  align-self: center;
+  color: var(--color-text-secondary);
+  cursor:default;
+  padding:0px 10px 0px 10px;
+  user-select: none;
+}
+
+
+.button {
+  font-size: 1.25rem;
+  background: none;
+  padding: 4px 4px 5px 4px;
+  border: none;
+  font-family: Monocraft, Roboto;
+  color: var(--color-text-primary);
+  transition: color 0.15s, top 0.15s;
+  user-select: none;
+}
+
+.button.on {
+  color: var(--color-error);
+}
+
+.button:hover {
+  cursor: pointer;
+  color: var(--color-text);
+  position: relative;
+  top: -2px;
+}
+
+.button.on:hover {
+  cursor: default;
+  color: var(--color-error);
+  top: 0px;
+}
+
+.options {
+  background-color: var(--color-background-light);
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  justify-content: space-between;
+  border-radius: 14px;
+  padding: 8px 10px 5px 10px;
+  justify-self: center;
+  width:max-content;
+  top: 80px;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  z-index: 20;
+  box-shadow: 3px 3px 5px rgba(0,0,0,50%);
+}
+
+.setting {
+  font-size: 1.25rem;
+  padding: 4px 5px 5px 5px;
+  color: var(--color-text-primary);
+  user-select: none;
+  display: inline-block;
+  position: relative;
+  overflow: visible;
+}
+
+.setting-container {
+  margin: 0 auto;
+}
+
+.close-settings {
+  font-size: 1.25rem;
+  color: var(--color-text-primary);
+  position: absolute;
+  padding: 0;
+  top: 5px;
+  right: 10px;
+  text-align: right;
+  display: inline;
+  user-select: none;
+  transition: color 0.15s;
+}
+
+.close-settings:hover {
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.close-settings:active {
+  color: var(--color-error);
+}
